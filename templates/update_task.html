@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit {{ task.title }}{% endblock %}
+
+{% block content %}
+<div style="max-width: 700px; margin: 0 auto;">
+    <h2 class="page-title"><i class="far fa-edit"></i> Edit Task</h2>
+    <form method="POST">
+        <div>
+            <label for="title">Task Title</label>
+            <input type="text" id="title" name="title" value="{{ task.title }}" required>
+        </div>
+        <div>
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="4">{{ task.description }}</textarea>
+        </div>
+        <div style="display: flex; align-items: center;">
+            <input type="checkbox" id="completed" name="completed" style="width: auto; margin-right: 10px;" {% if
+                task.completed %}checked{% endif %}>
+            <label for="completed" style="display: inline;">Mark as completed</label>
+        </div>
+        <div style="margin-top: 20px;">
+            <input type="submit" value="Update Task">
+        </div>
+    </form>
+</div>
+{% endblock %}
